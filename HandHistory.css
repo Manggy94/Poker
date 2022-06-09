@@ -1,0 +1,35 @@
+#players {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    width: 70%;
+}
+.player{
+    grid-column-start: 1;
+    grid-column-end: 16;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+.position{
+    grid-column-start: 1;
+    grid-column-end: span 1;
+    width: 60px;
+    height: 60px;
+    justify-self: center;
+    align-self: center;
+    border-radius: 100%;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+.stack{
+    grid-column: span 2;
+}
+.name{
+    grid-column-start: 2;
+    grid-column-end: span 1;
+
+}

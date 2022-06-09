@@ -1,0 +1,52 @@
+body{
+    background-color: #BBB;
+}
+
+#main{
+    display: flex;
+    justify-content: center;
+    
+}
+#table {
+    margin: 30px;
+    border-radius: 25% 25% 25% 25% / 50% 50% 50% 50%;
+    grid-area: 1 / 1 / 7 / 13;
+    background-color: green;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+#layout{
+    border-radius: 25% 25% 25% 25% / 50% 50% 50% 50%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    width: 800px;
+    height: 450px;
+    display: grid;
+}
+
+.pl-box{
+    background-color: grey;
+    border-radius: 25% 25% 25% 25% / 50% 50% 50% 50%;
+}
+
+#p1{
+    grid-area:  1/ 1 / 3 / 3;
+}
+
+#p2{
+    grid-area:  1/ 6 / 3 / 8;
+}
+#p3{
+    grid-area:  1/ -1 / 3 / -3;
+}
+#p4{
+    grid-area:  -1/ -1 / -3 / -3;
+}
+#p5{
+    grid-area:  -1/ 6 / -3 / 8;
+}
+#p6{
+    grid-area:  -1/ 1 / -3 / 3;
+}

@@ -1,0 +1,20 @@
+:root{
+    --box-size: 50px;
+}
+
+.handBox {
+    width:var(--box-size);
+    height:var(--box-size);
+    border:1px solid grey;
+    position:relative;
+    display:inline-block;
+    overflow:hidden;
+    text-align:center;
+    vertical-align:middle;
+    line-height:var(--box-size);
+    background-repeat: no-repeat;
+    
+
+  }
+
+  
