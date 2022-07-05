@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Range Table</title>
+        <link rel="stylesheet" href="Ranger.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <h1>Poker Ranges</h1>
+        <div id="main">
+        </div>
+        
+        <script type="text/javascript" src="Ranger.js"></script>
+        <script type="text/javascript">
+            window.addEventListener("load", function(event) {
+                main = document.querySelector("#main");
+                table = rangeTable(document);
+                main.appendChild(table)
+                pkrange = createRange()
+                rangeDict = createRangeDict()
+                for (hand in rangeDict){
+                    console.log(`${hand}: ${rangeDict[hand]}`)
+                    displayHandProba(hand, rangeDict[hand])
+                }
+                if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+...
+                    httpRequest = new XMLHttpRequest();
+                    console.log("case1")
+                }
+                else if (window.ActiveXObject) { // IE 6 et antérieurs
+                    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                    console.log("case2")
+                }
+                httpRequest.onreadystatechange = function() {
+                    // instructions de traitement de la réponse
+                    console.log("ok")
+                };
+                httpRequest.open('GET', 'http://localhost:8000', true);    
+                httpRequest.setRequestHeader('Access-Control-Allow-Origin', "*");
+                httpRequest.send();
+             });
+            
+        </script>
+    </body>
+</html>
