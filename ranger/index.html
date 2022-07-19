@@ -22,6 +22,21 @@
                     console.log(`${hand}: ${rangeDict[hand]}`)
                     displayHandProba(hand, rangeDict[hand])
                 }
+                if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+...
+                    httpRequest = new XMLHttpRequest();
+                    console.log("case1")
+                }
+                else if (window.ActiveXObject) { // IE 6 et antérieurs
+                    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                    console.log("case2")
+                }
+                httpRequest.onreadystatechange = function() {
+                    // instructions de traitement de la réponse
+                    console.log("okokok")
+                };
+                httpRequest.open('GET', 'http://localhost:8000', true);    
+                httpRequest.setRequestHeader('Access-Control-Allow-Origin', "*");
+                httpRequest.send();
              });
             
         </script>

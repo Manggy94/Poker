@@ -52,7 +52,7 @@ function createRangeDict(){
 }
 
 function displayHandProba(hand, p){
-    console.log(hand, p)
+    //console.log(hand, p)
     c1 = "green"
     c2 = "red"
     x1 = 100*p-5+"%"
