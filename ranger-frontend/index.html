@@ -22,8 +22,10 @@
                     console.log(`${hand}: ${rangeDict[hand]}`)
                     displayHandProba(hand, rangeDict[hand])
                 }
-                if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+...
-                    httpRequest = new XMLHttpRequest();
+             });
+            
+             if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+...
+                    var httpRequest = new XMLHttpRequest();
                     console.log("case1")
                 }
                 else if (window.ActiveXObject) { // IE 6 et antérieurs
@@ -34,11 +36,9 @@
                     // instructions de traitement de la réponse
                     console.log("okokok")
                 };
-                httpRequest.open('GET', 'http://localhost:8000', true);    
+                httpRequest.open('GET', 'http://localhost:8089/', true);    
                 httpRequest.setRequestHeader('Access-Control-Allow-Origin', "*");
                 httpRequest.send();
-             });
-            
         </script>
     </body>
 </html>
