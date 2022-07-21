@@ -19,25 +19,30 @@
                 pkrange = createRange()
                 rangeDict = createRangeDict()
                 for (hand in rangeDict){
-                    console.log(`${hand}: ${rangeDict[hand]}`)
+                    //console.log(`${hand}: ${rangeDict[hand]}`)
                     displayHandProba(hand, rangeDict[hand])
                 }
              });
             
              if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+...
                     var httpRequest = new XMLHttpRequest();
-                    console.log("case1")
+                    console.log("Request is XHR")
                 }
                 else if (window.ActiveXObject) { // IE 6 et antérieurs
                     httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-                    console.log("case2")
+                    console.log("Request is Active X object")
                 }
+                var header = "Access-Control-Allow-Origin"
+                var ranger_backend = "http://localhost:8081/" 
+                httpRequest.open('GET', ranger_backend, true);
+                httpRequest.setRequestHeader(header, ranger_backend)
                 httpRequest.onreadystatechange = function() {
                     // instructions de traitement de la réponse
-                    console.log("okokok")
+                    console.log(httpRequest.readyState)
+                    console.log(httpRequest.status)
+                    console.log(httpRequest.responseText)
                 };
-                httpRequest.open('GET', 'http://localhost:8089/', true);    
-                httpRequest.setRequestHeader('Access-Control-Allow-Origin', "*");
+                    
                 httpRequest.send();
         </script>
     </body>
