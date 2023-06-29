@@ -15,35 +15,57 @@
             window.addEventListener("load", function(event) {
                 main = document.querySelector("#main");
                 table = rangeTable(document);
-                main.appendChild(table)
-                pkrange = createRange()
-                rangeDict = createRangeDict()
+                main.appendChild(table);
+                pkrange = createRange();
+                rangeDict = createRangeDict();
                 for (hand in rangeDict){
                     //console.log(`${hand}: ${rangeDict[hand]}`)
-                    displayHandProba(hand, rangeDict[hand])
+                    displayHandProba(hand, rangeDict[hand]);
                 }
-             });
-            
-             if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+...
+                if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+...
                     var httpRequest = new XMLHttpRequest();
-                    console.log("Request is XHR")
+                    console.log("Request is XHR");
+                    console.log("Ready State: ", httpRequest.readyState);
+
+                    console.log("Status: ", httpRequest.status);
                 }
                 else if (window.ActiveXObject) { // IE 6 et antérieurs
                     httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-                    console.log("Request is Active X object")
+                    console.log("Request is Active X object");
                 }
-                var header = "Access-Control-Allow-Origin"
-                var ranger_backend = "http://localhost:8081/" 
+                var header = "Access-Control-Allow-Origin";
+                var ranger_backend = "http://localhost:8081/" ;
+
                 httpRequest.open('GET', ranger_backend, true);
-                httpRequest.setRequestHeader(header, ranger_backend)
+                console.log("Request is opened");
+                console.log("Ready State: ", httpRequest.readyState);
+                console.log("Status: ", httpRequest.status);
+
+                httpRequest.setRequestHeader(header, ranger_backend);
+                httpRequest.send();
+                console.log("Request has been sent");
+
                 httpRequest.onreadystatechange = function() {
                     // instructions de traitement de la réponse
-                    console.log(httpRequest.readyState)
-                    console.log(httpRequest.status)
-                    console.log(httpRequest.responseText)
-                };
+                    console.log("Ready State: ", httpRequest.readyState);
+                    console.log("Status: ",httpRequest.status)
                     
-                httpRequest.send();
+
+                    var rsp_txt = httpRequest.responseText
+                    if (rsp_txt !=""){
+                        rangeDict = JSON.parse(rsp_txt);
+                    }
+                    console.log(rangeDict)
+                    
+                    for (hand in rangeDict){
+                        //console.log(`${hand}: ${rangeDict[hand]}`)
+                        displayHandProba(hand, rangeDict[hand])
+                    }
+                    console.log(httpRequest.status);
+                };   
+                
+             });            
+             
         </script>
     </body>
 </html>
